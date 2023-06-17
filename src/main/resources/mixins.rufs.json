@@ -1,0 +1,17 @@
+{
+  "package": "me.gtulol6.rufs.mixin",
+  "refmap": "mixins.rufs.refmap.json",
+  "minVersion": "0.7",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "GuiConnectingMixin",
+    "MinecraftMixin",
+    "NetworkPlayerInfoMixin",
+    "RenderGlobalMixin",
+    "RenderItemMixin",
+    "RenderManagerMixin",
+    "WorldRendererMixin"
+  ]
+}
