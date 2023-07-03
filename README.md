@@ -8,6 +8,9 @@
     `rufs.toml` in `.minecraft\config\` or values within it should fix
     this issue after a restart.
 
+## Config
+     Open the config by either running /rufs in chat or click the button in
+     the options menu labeled 'RUFS Config' next to the 'Chat Settings' button.
 ## Features
 
    - Block Face Render
@@ -26,6 +29,7 @@
    - Skin/Cape Loading
      - toggle the loading of Skin/Cape Files from the Auth Server, useful for reducing Data Usage
      - save your phone data plan usage if you play with mobile hotspot idk
+     - you can also toggle the loading of skin files for skull items and blocks
 
 ### Name
     I forgot what the abbreviation 'RUFS' was supposed to stand for ¯\_(ツ)_/¯

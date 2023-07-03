@@ -11,6 +11,7 @@ import java.io.File;
 
 public class Config extends Vigilant {
 
+    public static Config c;
 
     @Property(
             type = PropertyType.SWITCH,
@@ -84,6 +85,7 @@ public class Config extends Vigilant {
                        "POSITION_TEX_LMAP_COLOR", "POSITION_TEX_COLOR_NORMAL"}
     )
     public int defaultVertexFormat = 6;
+    @SuppressWarnings("unused")
     @Property(
             type = PropertyType.BUTTON,
             name = "Reset",
@@ -174,6 +176,7 @@ public class Config extends Vigilant {
             category = "Hand Item"
     )
     public boolean textureManagerMipmap = false;
+    @SuppressWarnings("unused")
     @Property(
             type = PropertyType.BUTTON,
             name = "Reset",
@@ -208,10 +211,18 @@ public class Config extends Vigilant {
             category = "Skin/Cape Loading"
     )
     public boolean loadCapeFile = true;
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Load Skull Item Skins",
+            description = "Toggles whether to load Skull Item Skins from the Auth Server, useful for reducing Data Usage.",
+            category = "Skin/Cape Loading"
+    )
+    public boolean loadSkullItemSkins = true;
 
 
     public Config() {
         super(new File(RUFS.configLocation), "§cRUFS", new JVMAnnotationPropertyCollector(), new CustomSortingBehavior());
         initialize();
+        c = RUFS.getInstance().getConfig();
     }
 }

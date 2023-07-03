@@ -67,6 +67,9 @@ dependencies {
     shadowImpl("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
         isTransitive = false
     }
+//    shadowImpl("gg.essential:loader-launchwrapper:1.1.3") {
+//        isTransitive = false
+//    }
     annotationProcessor("org.spongepowered:mixin:0.8.4-SNAPSHOT")
 
     // If you don't want to log in with your real minecraft account, remove this line
