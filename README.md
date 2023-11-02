@@ -26,6 +26,10 @@
      - change various variables in the Hand Item rendering code, for example:\
      Blend Function Src Factor to 774 and Dst Factor to 775 makes Hand Items transparent
      - also cool
+   - Enity Model
+     - Enable Rotation for All Entities/Only Players/Only Own Player
+     - Set Rotation Angle and Axis and Translation Position
+     - funni screenshots
    - Skin/Cape Loading
      - toggle the loading of Skin/Cape Files from the Auth Server, useful for reducing Data Usage
      - save your phone data plan usage if you play with mobile hotspot idk
