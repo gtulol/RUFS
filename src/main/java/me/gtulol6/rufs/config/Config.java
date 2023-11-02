@@ -96,7 +96,7 @@ public class Config extends Vigilant {
         hitBoxColor = new Color(255, 255, 255, 255);
         eyeBoxColor = new Color(255, 0, 0, 255);
         vectorColor = new Color(0, 0, 255, 255);
-        defaultVertexFormat = 6;
+        defaultVertexFormat = 5;
     }
 
 
@@ -194,6 +194,109 @@ public class Config extends Vigilant {
         cullHandItemRender = false;
         textureManagerBlur = false;
         textureManagerMipmap = true;
+    }
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Enable Rotated Entity Model",
+            description = "Toggles whether to render Entities rotated.",
+            category = "Entity Model"
+    )
+    public boolean enableRotatedEntityModel = false;
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Enable Rotated Model for Players only",
+            description = "Toggles whether to render Players rotated.",
+            category = "Entity Model"
+    )
+    public boolean enableRotatedPlayerModel = false;
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Enable Rotated Player Model for Self Only",
+            description = "Toggles whether to render your own Player rotated only.",
+            category = "Entity Model"
+    )
+    public boolean enableRotatedPlayerModelForSelfOnly = false;
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Entity Model Rotation Angle",
+            description = "Sets the Angle at which to render the Entity Model.",
+            category = "Entity Model",
+            minF = -360.0F,
+            maxF = 360.0F
+    )
+    public float entityModelRotationAngle = 180.0F;
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Entity Model rotate X",
+            description = "Sets the X Rotation of the Entity Model.",
+            category = "Entity Model",
+            minF = -10.0F,
+            maxF = 10.0F
+    )
+    public float entityModelrotateX = 0.0F;
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Entity Model rotate Y",
+            description = "Sets the Y Rotation of the Entity Model.",
+            category = "Entity Model",
+            minF = -10.0F,
+            maxF = 10.0F
+    )
+    public float entityModelrotateY = 0.0F;
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Entity Model rotate Z",
+            description = "Sets the Z Rotation of the Entity Model.",
+            category = "Entity Model",
+            minF = -10.0F,
+            maxF = 10.0F
+    )
+    public float entityModelrotateZ = 1.0F;
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Entity Model translate X",
+            description = "Sets the X Translation of the Entity Model.",
+            category = "Entity Model",
+            minF = -10.0F,
+            maxF = 10.0F
+    )
+    public float entityModeltranslateX = 0.0F;
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Entity Model translate Y",
+            description = "Sets the Y Translation of the Entity Model.",
+            category = "Entity Model",
+            minF = -10.0F,
+            maxF = 10.0F
+    )
+    public float entityModeltranslateY = 0.1F;
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Entity Model translate Z",
+            description = "Sets the Z Translation of the Entity Model.",
+            category = "Entity Model",
+            minF = -10.0F,
+            maxF = 10.0F
+    )
+    public float entityModeltranslateZ = 0.0F;
+    @Property(
+            type = PropertyType.BUTTON,
+            name = "Reset",
+            description = "Resets all Variables changed in Entity Model to their default values.",
+            category = "Entity Model"
+    )
+    public void entityModelResetValues() {
+        enableRotatedEntityModel = false;
+        enableRotatedPlayerModel = false;
+        enableRotatedPlayerModelForSelfOnly = false;
+        entityModelRotationAngle = 180.0F;
+        entityModelrotateX = 0.0F;
+        entityModelrotateY = 0.0F;
+        entityModelrotateZ = 1.0F;
+        entityModeltranslateX = 0.0F;
+        entityModeltranslateY = 0.1F;
+        entityModeltranslateZ = 0.0F;
     }
 
 

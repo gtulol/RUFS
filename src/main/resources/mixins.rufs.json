@@ -8,13 +8,14 @@
   "client": [
     "GuiConnectingMixin",
     "GuiOptionsMixin",
+    "RendererLivingEntityMixin",
     "MinecraftMixin",
     "NetworkPlayerInfoMixin",
     "RenderGlobalMixin",
     "RenderItemMixin",
     "RenderManagerMixin",
-    "S2FPacketSetSlotMixin",
     "S04PacketEntityEquipmentMixin",
+    "S2FPacketSetSlotMixin",
     "S30PacketWindowItemsMixin",
     "S35PacketUpdateTileEntityMixin",
     "WorldRendererMixin"
