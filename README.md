@@ -24,6 +24,7 @@
      - change the color of your Hitboxes, Eyeboxes and Looking Vectors (f3+B)
      - cuz its cool
    - Hand Item
+     - Hand Item scaling e.g. flip your Hand Item onte the left side or left top etc
      - change various variables in the Hand Item rendering code, for example:\
      Blend Function Src Factor to 774 and Dst Factor to 775 makes Hand Items transparent
      - also cool
