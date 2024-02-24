@@ -2,10 +2,13 @@ package me.gtulol6.rufs.mixin;
 
 import me.gtulol6.rufs.RUFS;
 import me.gtulol6.rufs.config.Config;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.resources.model.IBakedModel;
+import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
+import org.spongepowered.asm.mixin.Dynamic;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -13,6 +16,9 @@ import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
+import static net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType.FIRST_PERSON;
+
+@SuppressWarnings("deprecation")
 @Mixin(value = net.minecraft.client.renderer.entity.RenderItem.class, priority = -999)
 public class RenderItemMixin {
 
@@ -82,5 +88,18 @@ public class RenderItemMixin {
             GL11.glDisable(GL11.GL_CULL_FACE);
         if(!c.cullHandItemRender)
             GL11.glEnable(GL11.GL_CULL_FACE);
+    }
+
+    /*
+    https://github.com/Sk1erLLC/Patcher/blob/master/src/main/java/club/sk1er/patcher/mixins/features/lefthand/RenderItemMixin_LeftHandedness.java
+     */
+    @Inject(method = "renderItemModelTransform", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/RenderItem;renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/resources/model/IBakedModel;)V"))
+    public void flipHandItem(ItemStack stack, IBakedModel model, ItemCameraTransforms.TransformType cameraTransformType, CallbackInfo ci) {
+        if(c.onlyInFirstPerson && cameraTransformType != FIRST_PERSON)
+            return;
+        if (c.enableHandItemScale && !(stack.getItem().isFull3D() || stack.getItem() instanceof ItemBow)) {
+            GlStateManager.scale(c.handItemScaleX, c.handItemScaleY, c.handItemScaleZ);
+            GL11.glFrontFace(GL11.GL_CCW);
+        }
     }
 }

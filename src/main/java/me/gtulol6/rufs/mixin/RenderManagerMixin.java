@@ -2,14 +2,20 @@ package me.gtulol6.rufs.mixin;
 
 import me.gtulol6.rufs.RUFS;
 import me.gtulol6.rufs.config.Config;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.texture.TextureManager;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 @Mixin(value = net.minecraft.client.renderer.entity.RenderManager.class, priority = -999)
 public class RenderManagerMixin {
 
+    @Shadow private boolean debugBoundingBox;
     Config c = RUFS.getInstance().getConfig();
 
     /*
@@ -79,5 +85,14 @@ public class RenderManagerMixin {
         args.set(1, c.vectorColor.getGreen());
         args.set(2, c.vectorColor.getBlue());
         args.set(3, c.vectorColor.getAlpha());
+    }
+
+
+
+    @Inject(method = "<init>", at = @At("TAIL"))
+    public void setDebugBoundingBoxOnStartup(TextureManager renderEngineIn, RenderItem itemRendererIn, CallbackInfo ci) {
+        c = RUFS.getInstance().getConfig();
+        if(c.enableHitboxOnStartup)
+            this.debugBoundingBox = true;
     }
 }

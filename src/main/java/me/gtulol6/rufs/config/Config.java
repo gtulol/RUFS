@@ -5,6 +5,7 @@ import gg.essential.vigilance.data.JVMAnnotationPropertyCollector;
 import gg.essential.vigilance.data.Property;
 import gg.essential.vigilance.data.PropertyType;
 import me.gtulol6.rufs.RUFS;
+import net.minecraft.client.Minecraft;
 
 import java.awt.*;
 import java.io.File;
@@ -62,6 +63,11 @@ public class Config extends Vigilant {
 
 
     @Property(
+            type = PropertyType.CHECKBOX,
+            name = "Enable Hitbox on Minecraft Startup",
+            category = "Hitbox")
+    public boolean enableHitboxOnStartup = false;
+    @Property(
             type = PropertyType.COLOR,
             name = "Set the color of the hitbox",
             category = "Hitbox")
@@ -100,6 +106,54 @@ public class Config extends Vigilant {
     }
 
 
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Enable Hand Item Scaling",
+            description = "Toggles whether to render the scaled Hand Item.",
+            category = "Hand Item"
+    )
+    public boolean enableHandItemScale = false;
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Only in First Person",
+            description = "Toggles whether to render the scaled Hand Item only in First Person.",
+            category = "Hand Item"
+    )
+    public boolean onlyInFirstPerson = true;
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Hand Item Scale X",
+            description = "Sets the X Scale of the Hand Item.",
+            category = "Hand Item",
+            minF = -8.0F,
+            maxF = 8.0F
+    )
+    public float handItemScaleX = 1.0F;
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Hand Item Scale Y",
+            description = "Sets the Y Scale of the Hand Item.",
+            category = "Hand Item",
+            minF = -8.0F,
+            maxF = 8.0F
+    )
+    public float handItemScaleY = 1.0F;
+    @Property(
+            type = PropertyType.DECIMAL_SLIDER,
+            name = "Hand Item Scale Z",
+            description = "Sets the Z Scale of the Hand Item.",
+            category = "Hand Item",
+            minF = -8.0F,
+            maxF = 8.0F
+    )
+    public float handItemScaleZ = 1.0F;
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Render Left Arm Too",
+            description = "Toggles whether to render the Left Arm too.",
+            category = "Hand Item"
+    )
+    public boolean renderLeftArmToo = false;
     @Property(
             type = PropertyType.NUMBER,
             name = "Blend Function Source Factor",
@@ -231,8 +285,8 @@ public class Config extends Vigilant {
             name = "Entity Model rotate X",
             description = "Sets the X Rotation of the Entity Model.",
             category = "Entity Model",
-            minF = -10.0F,
-            maxF = 10.0F
+            minF = -1.0F,
+            maxF = 1.0F
     )
     public float entityModelrotateX = 0.0F;
     @Property(
@@ -240,8 +294,8 @@ public class Config extends Vigilant {
             name = "Entity Model rotate Y",
             description = "Sets the Y Rotation of the Entity Model.",
             category = "Entity Model",
-            minF = -10.0F,
-            maxF = 10.0F
+            minF = -1.0F,
+            maxF = 1.0F
     )
     public float entityModelrotateY = 0.0F;
     @Property(
@@ -249,8 +303,8 @@ public class Config extends Vigilant {
             name = "Entity Model rotate Z",
             description = "Sets the Z Rotation of the Entity Model.",
             category = "Entity Model",
-            minF = -10.0F,
-            maxF = 10.0F
+            minF = -1.0F,
+            maxF = 1.0F
     )
     public float entityModelrotateZ = 1.0F;
     @Property(
@@ -258,8 +312,8 @@ public class Config extends Vigilant {
             name = "Entity Model translate X",
             description = "Sets the X Translation of the Entity Model.",
             category = "Entity Model",
-            minF = -10.0F,
-            maxF = 10.0F
+            minF = -1.0F,
+            maxF = 1.0F
     )
     public float entityModeltranslateX = 0.0F;
     @Property(
@@ -267,8 +321,8 @@ public class Config extends Vigilant {
             name = "Entity Model translate Y",
             description = "Sets the Y Translation of the Entity Model.",
             category = "Entity Model",
-            minF = -10.0F,
-            maxF = 10.0F
+            minF = -1.0F,
+            maxF = 1.0F
     )
     public float entityModeltranslateY = 0.1F;
     @Property(
@@ -276,8 +330,8 @@ public class Config extends Vigilant {
             name = "Entity Model translate Z",
             description = "Sets the Z Translation of the Entity Model.",
             category = "Entity Model",
-            minF = -10.0F,
-            maxF = 10.0F
+            minF = -1.0F,
+            maxF = 1.0F
     )
     public float entityModeltranslateZ = 0.0F;
     @Property(
@@ -321,6 +375,16 @@ public class Config extends Vigilant {
             category = "Skin/Cape Loading"
     )
     public boolean loadSkullItemSkins = true;
+
+    @Property(
+            type = PropertyType.BUTTON,
+            name = "Anaglyph 3D",
+            description = "Forces toggles Anaglyph 3D when Shader is blocking it",
+            category = "Overrides"
+    )
+    public void anaglyph3D() {
+        Minecraft.getMinecraft().gameSettings.anaglyph = !Minecraft.getMinecraft().gameSettings.anaglyph;
+    }
 
 
     public Config() {
